@@ -576,8 +576,8 @@
 <p><strong>弊端</strong>：GC后产生位置不连续的内存碎片</p>
 <h2 id="拷贝算法"><a href="#拷贝算法" class="headerlink" title="拷贝算法"></a>拷贝算法</h2><p>把内存分为平均两个部分，每次只用其中一个，而当其中一个内存满了之后，将内存中所有存活的对象复制到另一半中，就这样循环下去</p>
 <p>没有内存碎片，内存连续，<strong>浪费内存</strong></p>
-<p><img src="https://duiduidong.github.io/posts/114e/1605799583803.png" alt="1605799583803"></p>
-<h2 id="标记压缩"><a href="#标记压缩" class="headerlink" title="标记压缩"></a>标记压缩</h2><p><img src="https://duiduidong.github.io/posts/114e/1605799754589.png" alt="1605799754589"></p>
+<p><img src="https://duiduidong.github.io/posts/114e/1605799583803.png"></p>
+<h2 id="标记压缩"><a href="#标记压缩" class="headerlink" title="标记压缩"></a>标记压缩</h2><p><img src="https://duiduidong.github.io/posts/114e/1605799754589.png"></p>
 <p>第一阶段标记存活状态，第二阶段把所有存活对象整理到一块连续的内存上，然后在把非存活的对象清理掉，<strong>但需要单开线程，效率低，但是没有内存碎片产生</strong></p>
 <h2 id="分代收集算法（jdk1-8版本）"><a href="#分代收集算法（jdk1-8版本）" class="headerlink" title="分代收集算法（jdk1.8版本）"></a>分代收集算法（jdk1.8版本）</h2><p>现在Java用的是这种回收算法</p>
 <h3 id="Java中的分代模型"><a href="#Java中的分代模型" class="headerlink" title="Java中的分代模型"></a>Java中的分代模型</h3><p>新生代+老年代+元数据区（jdk1.8）  jdk1.7为永久代</p>
@@ -592,8 +592,8 @@
 <p>3.类创建过程太大，直接进入到老年代</p>
 <p>老年代垃圾回收（FGC=MajorGC），要避免<strong>频繁的老年代垃圾回收</strong>。因为回收过程会停止服务</p>
 <p>FGC为老年代和新生代一起垃圾回收</p>
-<p><img src="https://duiduidong.github.io/posts/114e/1605778541573.png" alt="1605778541573"></p>
-<h3 id="垃圾回收器"><a href="#垃圾回收器" class="headerlink" title="垃圾回收器"></a>垃圾回收器</h3><p><img src="https://duiduidong.github.io/posts/114e/1605790595902.png" alt="1605790595902"></p>
+<p><img src="https://duiduidong.github.io/posts/114e/1605778541573.png"></p>
+<h3 id="垃圾回收器"><a href="#垃圾回收器" class="headerlink" title="垃圾回收器"></a>垃圾回收器</h3><p><img src="https://duiduidong.github.io/posts/114e/1605790595902.png"></p>
 <p>上边的为新生代回收器，下边的为老年代回收器，Serial为串行回收，Parallel为并行回收，jdk1.8默认为串行的新生代和老年代回收器</p>
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>垃圾回收的是没有任何引用的对象，可能是一个可能是一堆对象，然后通过根可达算法去寻找新生代和老年代中的死对象，在通过分代收集算法，去进行垃圾回收。</p>
 
