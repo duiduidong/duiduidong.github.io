@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="GC知识和常见面试问题, Java">
+    <meta name="keywords" content="GC知识, Java">
     <meta name="description" content="分享生活,分享知识">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>GC知识和常见面试问题 | Duidui Dong</title>
+    <title>GC知识 | Duidui Dong</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -396,12 +396,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/21.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">GC知识和常见面试问题</h1>
+                    <h1 class="description center-align post-title">GC知识</h1>
                 </div>
             </div>
         </div>
@@ -534,7 +534,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-11-19
+                    2020-06-19
                 </div>
                 
 
@@ -572,13 +572,13 @@
 <p>如果一个对象没有被他们任何一个用到，就无法到达</p>
 <h1 id="什么时候GC"><a href="#什么时候GC" class="headerlink" title="什么时候GC"></a>什么时候GC</h1><p>1.程序调用System.gc时进行GC</p>
 <p>2.操作系统会在内存不足时进行GC</p>
-<h1 id="垃圾回收算法："><a href="#垃圾回收算法：" class="headerlink" title="垃圾回收算法："></a>垃圾回收算法：</h1><h2 id="标记清除"><a href="#标记清除" class="headerlink" title="标记清除"></a>标记清除</h2><p><img src="/posts/114e.htm/Windows\System32\blog\source_posts\GC知识和常见面试问题\1605776884509.png" alt="1605776884509"></p>
-<p>分为两个阶段，标记阶段，标记每个对象是活着还是死亡，第二个阶段为清除阶段，直接清除掉死亡对象</p>
+<h1 id="垃圾回收算法："><a href="#垃圾回收算法：" class="headerlink" title="垃圾回收算法："></a>垃圾回收算法：</h1><h2 id="标记清除"><a href="#标记清除" class="headerlink" title="标记清除"></a>标记清除</h2><p>分为两个阶段，标记阶段，标记每个对象是活着还是死亡，第二个阶段为清除阶段，直接清除掉死亡对象</p>
+<p><img src="/posts/73ea.htm/1605776884509.png" alt="1605776884509"></p>
 <p><strong>弊端</strong>：GC后产生位置不连续的内存碎片</p>
 <h2 id="拷贝算法"><a href="#拷贝算法" class="headerlink" title="拷贝算法"></a>拷贝算法</h2><p>把内存分为平均两个部分，每次只用其中一个，而当其中一个内存满了之后，将内存中所有存活的对象复制到另一半中，就这样循环下去</p>
 <p>没有内存碎片，内存连续，<strong>浪费内存</strong></p>
-<p><img src="/posts/114e.htm/Windows\System32\blog\source_posts\GC知识和常见面试问题\1605799583803.png" alt="1605799583803"></p>
-<h2 id="标记压缩"><a href="#标记压缩" class="headerlink" title="标记压缩"></a>标记压缩</h2><p><img src="/posts/114e.htm/Windows\System32\blog\source_posts\GC知识和常见面试问题\1605799754589.png" alt="1605799754589"></p>
+<p><img src="/posts/73ea.htm/1605799583803.png" alt="1605799583803"></p>
+<h2 id="标记压缩"><a href="#标记压缩" class="headerlink" title="标记压缩"></a>标记压缩</h2><p><img src="/posts/73ea.htm/1605799754589.png" alt="1605799754589"></p>
 <p>第一阶段标记存活状态，第二阶段把所有存活对象整理到一块连续的内存上，然后在把非存活的对象清理掉，<strong>但需要单开线程，效率低，但是没有内存碎片产生</strong></p>
 <h2 id="分代收集算法（jdk1-8版本）"><a href="#分代收集算法（jdk1-8版本）" class="headerlink" title="分代收集算法（jdk1.8版本）"></a>分代收集算法（jdk1.8版本）</h2><p>现在Java用的是这种回收算法</p>
 <h3 id="Java中的分代模型"><a href="#Java中的分代模型" class="headerlink" title="Java中的分代模型"></a>Java中的分代模型</h3><p>新生代+老年代+元数据区（jdk1.8）  jdk1.7为永久代</p>
@@ -593,8 +593,8 @@
 <p>3.类创建过程太大，直接进入到老年代</p>
 <p>老年代垃圾回收（FGC=MajorGC），要避免<strong>频繁的老年代垃圾回收</strong>。因为回收过程会停止服务</p>
 <p>FGC为老年代和新生代一起垃圾回收</p>
-<p><img src="/posts/114e.htm/Windows\System32\blog\source_posts\GC知识和常见面试问题\1605802708842.png" alt="1605802708842"></p>
-<h3 id="垃圾回收器"><a href="#垃圾回收器" class="headerlink" title="垃圾回收器"></a>垃圾回收器</h3><p><img src="/posts/114e.htm/Windows\System32\blog\source_posts\GC知识和常见面试问题\1605803225087.png" alt="1605803225087"></p>
+<p><img src="/posts/73ea.htm/1605778541573.png" alt="1605778541573"></p>
+<h3 id="垃圾回收器"><a href="#垃圾回收器" class="headerlink" title="垃圾回收器"></a>垃圾回收器</h3><p><img src="/posts/73ea.htm/1605790595902.png" alt="1605790595902"></p>
 <p>上边的为新生代回收器，下边的为老年代回收器，Serial为串行回收，Parallel为并行回收，jdk1.8默认为串行的新生代和老年代回收器</p>
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>垃圾回收的是没有任何引用的对象，可能是一个可能是一堆对象，然后通过根可达算法去寻找新生代和老年代中的死对象，在通过分代收集算法，去进行垃圾回收。</p>
 
@@ -622,7 +622,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://duiduidong.github.io/posts/114e.html">https://duiduidong.github.io/posts/114e.html</a>
+                    <a href="https://duiduidong.github.io/posts/73ea.html">https://duiduidong.github.io/posts/73ea.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -829,60 +829,9 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
-            <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
-            <div class="card">
-                <a href="/posts/114e.html">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="GC知识和常见面试问题">
-                        
-                        <span class="card-title">GC知识和常见面试问题</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            垃圾回收的一些总结
-首先明确什么是垃圾没有任何一个引用指向的对象或者没有任何指向的相互循环引用的多个对象
-怎么寻找垃圾Java用的是根可达算法
-所谓根就是线程的栈变量、静态变量、常量池、JNI指针
-如果一个对象没有被他们任何一个用到，就无法
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-11-19
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-user fa-fw"></i>
-                            Duidui Dong
-                            
-                        </span>
-                    </div>
-                </div>
-
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/Java%E3%80%81GC%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%EF%BC%8Cjdk1-8/">
-                        <span class="chip bg-color">Java、GC垃圾回收，jdk1.8</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
         <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
                 <a href="/posts/3eeb.html">
                     <div class="card-image">
@@ -900,8 +849,49 @@
                         
                     </div>
                     <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-11-10
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            Duidui Dong
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                本篇&nbsp;<i class="far fa-dot-circle"></i>
+            </div>
+            <div class="card">
+                <a href="/posts/73ea.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="GC知识">
+                        
+                        <span class="card-title">GC知识</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            垃圾回收的一些总结
+首先明确什么是垃圾没有任何一个引用指向的对象或者没有任何指向的相互循环引用的多个对象
+怎么寻找垃圾Java用的是根可达算法
+所谓根就是线程的栈变量、静态变量、常量池、JNI指针
+如果一个对象没有被他们任何一个用到，就无法
+                        
+                    </div>
+                    <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-11-10
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-06-19
                             </span>
                         <span class="publish-author">
                             
@@ -910,6 +900,15 @@
                             
                         </span>
                     </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Java%E3%80%81GC%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%EF%BC%8Cjdk1-8/">
+                        <span class="chip bg-color">Java、GC垃圾回收，jdk1.8</span>
+                    </a>
+                    
                 </div>
                 
             </div>
